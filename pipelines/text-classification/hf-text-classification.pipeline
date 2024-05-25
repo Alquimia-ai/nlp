@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
   "doc_type": "pipeline",
   "version": "3.0",
@@ -165,3 +166,323 @@
   ],
   "schemas": []
 }
+||||||| 86f1c32
+=======
+{
+  "doc_type": "pipeline",
+  "version": "3.0",
+  "json_schema": "http://api.dataplatform.ibm.com/schemas/common-pipeline/pipeline-flow/pipeline-flow-v3-schema.json",
+  "id": "elyra-auto-generated-pipeline",
+  "primary_pipeline": "primary",
+  "pipelines": [
+    {
+      "id": "primary",
+      "nodes": [
+        {
+          "id": "c2620dbc-14c2-4df2-871a-3ed9eb65a9f5",
+          "type": "execution_node",
+          "op": "execute-notebook-node",
+          "app_data": {
+            "component_parameters": {
+              "pipeline_parameters": [
+                "bucket",
+                "model_name"
+              ],
+              "dependencies": [],
+              "include_subdirectories": false,
+              "outputs": [
+                "label2id.json",
+                "id2label.json",
+                "dataset.csv"
+              ],
+              "env_vars": [],
+              "kubernetes_pod_annotations": [],
+              "kubernetes_pod_labels": [],
+              "kubernetes_secrets": [],
+              "kubernetes_shared_mem_size": {},
+              "kubernetes_tolerations": [],
+              "mounted_volumes": [],
+              "filename": "load_dataset_pipeline.ipynb",
+              "runtime_image": "quay.io/modh/runtime-images@sha256:d4f79f0d7596cf8058b58f1c317e698781a97bfbd3b6d13daa80390742ff6eac"
+            },
+            "label": "",
+            "ui_data": {
+              "label": "load_dataset_pipeline.ipynb",
+              "image": "/notebook/alquimiaai/nlp-tasks/static/elyra/notebook.svg",
+              "x_pos": 38,
+              "y_pos": 294,
+              "description": "Run notebook file"
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "609bf0d4-adba-4955-8b5b-08bd96f80bb9",
+          "type": "execution_node",
+          "op": "execute-notebook-node",
+          "app_data": {
+            "component_parameters": {
+              "pipeline_parameters": [
+                "bucket",
+                "run_name",
+                "version",
+                "model_name"
+              ],
+              "dependencies": [],
+              "include_subdirectories": false,
+              "outputs": [],
+              "env_vars": [],
+              "kubernetes_pod_annotations": [],
+              "kubernetes_pod_labels": [],
+              "kubernetes_secrets": [],
+              "kubernetes_shared_mem_size": {},
+              "kubernetes_tolerations": [],
+              "mounted_volumes": [],
+              "filename": "train-transformers-text-classification.ipynb",
+              "memory": 6
+            },
+            "label": "",
+            "ui_data": {
+              "label": "train-transformers-text-classification.ipynb",
+              "image": "/notebook/alquimiaai/nlp-tasks/static/elyra/notebook.svg",
+              "x_pos": 351,
+              "y_pos": 400,
+              "description": "Run notebook file"
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              },
+              "links": [
+                {
+                  "id": "9b3027ba-decc-4a18-8654-e03bc7200557",
+                  "node_id_ref": "c2620dbc-14c2-4df2-871a-3ed9eb65a9f5",
+                  "port_id_ref": "outPort"
+                }
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "2c782ddb-ba8b-448f-8aa0-3a42f576475a",
+          "type": "execution_node",
+          "op": "execute-r-node",
+          "app_data": {
+            "label": "",
+            "component_parameters": {
+              "dependencies": [],
+              "include_subdirectories": false,
+              "outputs": [],
+              "env_vars": [],
+              "kubernetes_pod_annotations": [],
+              "kubernetes_pod_labels": [],
+              "kubernetes_secrets": [],
+              "kubernetes_shared_mem_size": {},
+              "kubernetes_tolerations": [],
+              "mounted_volumes": [],
+              "filename": "metrics.r"
+            },
+            "ui_data": {
+              "label": "metrics.r",
+              "image": "/notebook/alquimiaai/nlp-tasks/static/elyra/r-logo.svg",
+              "x_pos": 563,
+              "y_pos": 533,
+              "description": "Run R script"
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "app_data": {
+        "ui_data": {
+          "comments": [
+            {
+              "id": "85832fb4-933c-4d09-aaa8-08a8530b4b4f",
+              "x_pos": 117.671875,
+              "y_pos": 142,
+              "width": 175,
+              "height": 44,
+              "content": "**Load datasets from Label studio**",
+              "associated_id_refs": [
+                {
+                  "id": "cfe6e61e-cbaf-4827-9e61-3d54069be7f7",
+                  "node_ref": "c2620dbc-14c2-4df2-871a-3ed9eb65a9f5"
+                }
+              ]
+            },
+            {
+              "id": "c8d9d46a-5c37-4b33-9f71-b575830c5c74",
+              "x_pos": 365,
+              "y_pos": 221,
+              "width": 215,
+              "height": 49,
+              "content": "### Transformers & PyTorch",
+              "associated_id_refs": [
+                {
+                  "id": "15b7f484-c85a-4623-b57c-3c15c959cc24",
+                  "node_ref": "609bf0d4-adba-4955-8b5b-08bd96f80bb9"
+                }
+              ]
+            }
+          ]
+        },
+        "version": 8,
+        "runtime_type": "KUBEFLOW_PIPELINES",
+        "properties": {
+          "name": "hf-text-classification",
+          "runtime": "Data Science Pipelines",
+          "pipeline_parameters": [
+            {
+              "name": "bucket",
+              "description": "The bucket name in S3",
+              "default_value": {
+                "type": "String",
+                "value": "YOUR_BUCKET_NAME"
+              },
+              "required": true
+            },
+            {
+              "name": "run_name",
+              "description": "Run name that is going to be identified within mlflow",
+              "default_value": {
+                "type": "String",
+                "value": "YOUR_MLFLOW_RUN_NAME"
+              },
+              "required": true
+            },
+            {
+              "name": "version",
+              "description": "The version which will identify your model in S3",
+              "default_value": {
+                "type": "Integer",
+                "value": 0
+              },
+              "required": true
+            },
+            {
+              "name": "model_name",
+              "description": "The name that identify your model",
+              "default_value": {
+                "type": "String",
+                "value": "YOUR_MODEL_NAME"
+              },
+              "required": true
+            }
+          ],
+          "pipeline_defaults": {
+            "mounted_volumes": [],
+            "kubernetes_pod_annotations": [],
+            "kubernetes_shared_mem_size": {},
+            "kubernetes_tolerations": [],
+            "kubernetes_pod_labels": [],
+            "env_vars": [
+              {
+                "env_var": "S3_ACCESS_KEY_ID",
+                "value": "DO00FNDXBW79VPTGQ28L"
+              },
+              {
+                "env_var": "S3_SECRET_ACCESS_KEY",
+                "value": "4/IRG/JNkbXl3Ysswqr3mN7HBmy/H0HQb8qFLl2dYm8"
+              },
+              {
+                "env_var": "MLFLOW_TRACKING_URI",
+                "value": "http://mlflow-tracking.mlflow.svc.cluster.local:80"
+              },
+              {
+                "env_var": "MLFLOW_TRACKING_USERNAME",
+                "value": "user"
+              },
+              {
+                "env_var": "MLFLOW_TRACKING_PASSWORD",
+                "value": "L1BSmOMODZ"
+              }
+            ],
+            "kubernetes_secrets": [],
+            "runtime_image": "quay.io/modh/runtime-images@sha256:d4f79f0d7596cf8058b58f1c317e698781a97bfbd3b6d13daa80390742ff6eac"
+          },
+          "description": "Fine tune text classification models using pipelines"
+        }
+      },
+      "runtime_ref": ""
+    }
+  ],
+  "schemas": []
+}
+>>>>>>> 3da8e78df4b68e6d866a4f246a4c062927cb5f97

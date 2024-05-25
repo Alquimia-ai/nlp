@@ -1,0 +1,177 @@
+{
+  "doc_type": "pipeline",
+  "version": "3.0",
+  "json_schema": "http://api.dataplatform.ibm.com/schemas/common-pipeline/pipeline-flow/pipeline-flow-v3-schema.json",
+  "id": "elyra-auto-generated-pipeline",
+  "primary_pipeline": "primary",
+  "pipelines": [
+    {
+      "id": "primary",
+      "nodes": [
+        {
+          "id": "14eb7f37-04ce-4940-8337-564465853686",
+          "type": "execution_node",
+          "op": "execute-notebook-node",
+          "app_data": {
+            "component_parameters": {
+              "dependencies": [],
+              "include_subdirectories": false,
+              "outputs": [],
+              "env_vars": [
+                {
+                  "env_var": "S3_ACCESS_KEY_ID"
+                },
+                {
+                  "env_var": "S3_SECRET_ACCESS_KEY"
+                },
+                {
+                  "env_var": "bucket"
+                }
+              ],
+              "kubernetes_pod_annotations": [],
+              "kubernetes_pod_labels": [],
+              "kubernetes_secrets": [],
+              "kubernetes_shared_mem_size": {},
+              "kubernetes_tolerations": [],
+              "mounted_volumes": [],
+              "filename": "../token-classification/load_dataset.ipynb",
+              "runtime_image": "quay.io/modh/runtime-images@sha256:d4f79f0d7596cf8058b58f1c317e698781a97bfbd3b6d13daa80390742ff6eac"
+            },
+            "label": "",
+            "ui_data": {
+              "label": "load_dataset.ipynb",
+              "image": "/notebook/alquimiaai/nlp-tasks/static/elyra/notebook.svg",
+              "x_pos": 102,
+              "y_pos": 150,
+              "description": "Run notebook file"
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "6652165a-74d3-4012-8b6f-063f7b2b0904",
+          "type": "execution_node",
+          "op": "execute-notebook-node",
+          "app_data": {
+            "component_parameters": {
+              "dependencies": [],
+              "include_subdirectories": false,
+              "outputs": [],
+              "env_vars": [
+                {
+                  "env_var": "MLFLOW_TRACKING_URI"
+                },
+                {
+                  "env_var": "bucket"
+                },
+                {
+                  "env_var": "S3_ACCESS_KEY_ID"
+                },
+                {
+                  "env_var": "S3_SECRET_ACCESS_KEY"
+                },
+                {
+                  "env_var": "MFLOW_EXPERIMENT_NAME"
+                },
+                {
+                  "env_var": "MLFLOW_FLATTEN_PARAMS"
+                }
+              ],
+              "kubernetes_pod_annotations": [],
+              "kubernetes_pod_labels": [],
+              "kubernetes_secrets": [],
+              "kubernetes_shared_mem_size": {},
+              "kubernetes_tolerations": [],
+              "mounted_volumes": [],
+              "filename": "../token-classification/train-token-classification.ipynb",
+              "runtime_image": "quay.io/modh/runtime-images@sha256:d4f79f0d7596cf8058b58f1c317e698781a97bfbd3b6d13daa80390742ff6eac"
+            },
+            "label": "",
+            "ui_data": {
+              "label": "train-token-classification.ipynb",
+              "image": "/notebook/alquimiaai/nlp-tasks/static/elyra/notebook.svg",
+              "x_pos": 397,
+              "y_pos": 359,
+              "description": "Run notebook file"
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              },
+              "links": [
+                {
+                  "id": "7670a7af-60fc-4cb4-9f32-2b2de2dcf73d",
+                  "node_id_ref": "14eb7f37-04ce-4940-8337-564465853686",
+                  "port_id_ref": "outPort"
+                }
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "app_data": {
+        "ui_data": {
+          "comments": []
+        },
+        "version": 8,
+        "runtime_type": "KUBEFLOW_PIPELINES",
+        "properties": {
+          "name": "hf-token-classification",
+          "runtime": "Data Science Pipelines"
+        }
+      },
+      "runtime_ref": ""
+    }
+  ],
+  "schemas": []
+}
