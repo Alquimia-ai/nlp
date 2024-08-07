@@ -42,7 +42,7 @@
               "label": "load_dataset.ipynb",
               "image": "/notebook/alquimiaai/nlp-tasks/static/elyra/notebook.svg",
               "x_pos": 102,
-              "y_pos": 255,
+              "y_pos": 150,
               "description": "Run notebook file"
             }
           },
@@ -117,8 +117,8 @@
             "ui_data": {
               "label": "train-token-classification.ipynb",
               "image": "/notebook/alquimiaai/nlp-tasks/static/elyra/notebook.svg",
-              "x_pos": 423,
-              "y_pos": 322,
+              "x_pos": 397,
+              "y_pos": 359,
               "description": "Run notebook file"
             }
           },
